@@ -25,7 +25,9 @@ class ThirdPage extends StatelessWidget {
               handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
               child: SliverAppBar(
                 pinned: true,
-                title:Text('在座的各位都是垃圾'),
+                title:Text('在座的各位都是垃圾',style:TextStyle(
+                  // color: Colors.red.withOpacity(.9)
+                )),
                 expandedHeight: 200.0,
                 // appbar 背景
                 flexibleSpace: FlexibleSpaceBar(

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:scoped_model/scoped_model.dart';
+import '../models/models.dart';
 
 class HomeMidList extends StatefulWidget {
   @override
@@ -21,29 +23,61 @@ class _HomeMidListState extends State<HomeMidList> {
     // 'http://p4.qhimg.com/t015f93bd3bd7f66e7d.jpg'
   ];
 
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  Future<bool> _onBackPressed() async {
+    return true;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Container(
-            height: 50,
-            color:Colors.white,
-            margin: EdgeInsets.only(top: 10.0),
-            width: MediaQuery.of(context).size.width,
-            child:ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: textList.length,
-              itemBuilder: (context,index){
-                return every(textList[index],index);
-              },
-            )
-          ),
-          wrapList()
-        ],
-      ),
+    return ScopedModelDescendant<MainStateModel>(
+                builder: (context,child,model){
+                  return Container(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Row(
+                          children: <Widget>[
+                            Container(
+                              margin: EdgeInsets.only(right: 50),
+                              child: Text('${model.count}'),
+                            ),
+
+                            FloatingActionButton(
+                              onPressed: (){
+                                model.increment();
+                              },
+                              child: Text('点击我+1'),
+                            )
+                          ],
+                        ),
+                        Container(
+                          height: 50,
+                          color:Colors.white,
+                          margin: EdgeInsets.only(top: 10.0),
+                          width: MediaQuery.of(context).size.width,
+                          child:ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: textList.length,
+                            itemBuilder: (context,index){
+                              return every(textList[index],index);
+                            },
+                          )
+                        ),
+                        wrapList()
+                      ],
+                    ),
+                  );
+                },
+              
     );
+                
   }
 
   Widget every(item,index){

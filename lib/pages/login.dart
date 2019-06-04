@@ -14,6 +14,7 @@ class _LoginState extends State<Login> {
 
   String _username = '';
   String _password = '';
+  
   List<Map> loginMethods = [
     {'icon':Icons.web,'title':'111'},
     {'icon':Icons.queue,'title':'222'},
@@ -185,18 +186,20 @@ class _LoginState extends State<Login> {
         alignment: MainAxisAlignment.center,
         children: loginMethods.map((item)=>Builder(builder: (context){
           return IconButton(
-            color: Colors.orange[200],
-            icon: Icon(item['icon'],color: Colors.grey,size: 40,),
-            onPressed: (){
-              //TODO : 第三方登录方法
-                Scaffold.of(context).showSnackBar(new SnackBar(
-                  content: new Text("${item['title']}登录"),
-                  action: new SnackBarAction(
-                    label: "取消",
-                    onPressed: () {},
-                  ),
-                ));
-            },
+                color: Colors.orange[200],
+                icon: Icon(item['icon'],color: Colors.grey,size: 40,),
+                onPressed: (){
+                 
+                  //TODO : 第三方登录方法
+                    Scaffold.of(context).showSnackBar(new SnackBar(
+                      content: new Text("${item['title']}登录 "),
+                      action: new SnackBarAction(
+                        label: "取消",
+                        onPressed: () {},
+                      ),
+                    ));
+                },
+              
           );
         },)).toList(),
       ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../router/application.dart';
 
 class HomeSwiper extends StatelessWidget {
 
@@ -33,6 +34,8 @@ class HomeSwiper extends StatelessWidget {
           return InkWell(
             onTap: (){
                print('点击了第${index}');
+
+               Application.router.navigateTo(context, '/home_detail?id=${index}');
             },
             child:Image.network('${_items[index]}',fit:BoxFit.cover)
           );
