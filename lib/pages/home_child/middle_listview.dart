@@ -30,10 +30,6 @@ class _HomeMidListState extends State<HomeMidList> {
     super.initState();
   }
 
-  Future<bool> _onBackPressed() async {
-    return true;
-  }
-
   @override
   Widget build(BuildContext context) {
     return ScopedModelDescendant<MainStateModel>(

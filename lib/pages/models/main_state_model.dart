@@ -1,7 +1,6 @@
 import 'package:scoped_model/scoped_model.dart';
-import './count_model.dart';
-import './decrease.dart';
+import 'models.dart';
 
-class MainStateModel extends Model with CountModel,DecreaseModel{  
+class MainStateModel extends Model with CountModel,DecreaseModel,ThemeStateModel{  
 
 }

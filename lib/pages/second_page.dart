@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
+import '../generated/i18n.dart';
 import 'package:test_flutter_demo/pages/models/models.dart';
 import './models/models.dart';
 
@@ -61,7 +62,7 @@ class _SecondPageState extends State<SecondPage> {
                         ),
                         SliverFillRemaining(
                           child: Center(
-                            child: Text('我是填充的',style:TextStyle(fontSize: 30.0)),
+                            child: Text(S.of(context).appName ,style:TextStyle(fontSize: 30.0)),
                           ),
                         )
                       ],
@@ -71,9 +72,5 @@ class _SecondPageState extends State<SecondPage> {
             
       
     );
-  }
-
-  Future<bool> _onBackPressed() async {
-    return true;
   }
 }

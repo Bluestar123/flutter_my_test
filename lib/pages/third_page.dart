@@ -80,12 +80,27 @@ class ThirdPage extends StatelessWidget {
                   //这里的sliver小部件，例如SliverList或SliverGrid。
                   SliverFixedExtentList(
                       delegate: SliverChildBuilderDelegate(
-                        (_,index)=>Container(
-                          child: Text('${tab} - ${index + 1}',style:TextStyle(
-                            fontSize: 20.0,color: colors[index%6]
-                          )),
-                          alignment: Alignment.center,
-                        ),
+                        (_,index){
+                          
+                          return Container(
+                            decoration: BoxDecoration(
+                              border: Border(bottom: BorderSide(width: 1,color: Color.fromARGB(10, 0, 0, 0)))
+                            ),
+                            child: ListTile(
+                              title:  Text('${tab} - ${index + 1}',style:TextStyle(
+                                  fontSize: 20.0,color: colors[index%6]
+                              )),
+                              trailing: Icon(
+                                Icons.favorite_border,
+                                color: null,
+                              ),
+                              onTap: (){
+                                
+                              },
+                            )
+                            
+                          );
+                        },
                       childCount: 15
                       ),
                       itemExtent: 50.0,//此示例中的项目固定gao为50像素

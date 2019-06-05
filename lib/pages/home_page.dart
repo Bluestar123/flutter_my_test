@@ -80,11 +80,34 @@ class HomePage extends StatelessWidget {
             return lead(context);
           },
         ),
+        actions: <Widget>[
+          IconButton(
+            icon:Icon( Icons.date_range),
+            onPressed: (){
+              _showTimeDialog(context);
+            },
+          )
+        ],
       ),
       drawer: Drawer(
         child:MyDrawer()
       ),
     );
+  }
+
+  //弹出时间框
+  void _showTimeDialog(context){
+    //DatePacker 是flutter自带的日期组件
+    showDatePicker(
+        context: context,//上下文
+        initialDate: new DateTime.now(),//初始今天
+        firstDate: new DateTime.now().subtract(new Duration(days: 30)),//日期范围，什么时候开始(距离今天前30天)
+        lastDate: new DateTime.now().add(new Duration(days: 30)),//日期范围 结束时间，什么时候结束(距离今天后30天)
+    ).then((DateTime val){
+          print(val);
+    }).catchError((e){
+          print(e);
+    });
   }
 
   //状态栏 样式
