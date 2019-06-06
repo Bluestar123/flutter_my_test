@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import '../generated/i18n.dart';
-import 'package:test_flutter_demo/pages/models/models.dart';
-import './models/models.dart';
+import 'package:test_flutter_demo/pages/store/models.dart';
+import './store/models.dart';
+import 'package:flutter/services.dart';
 
 class SecondPage extends StatefulWidget {
   @override
@@ -35,7 +36,7 @@ class _SecondPageState extends State<SecondPage> {
                         SliverAppBar(
                           leading: GestureDetector(
                             child: Icon(Icons.arrow_back),
-                            onTap: () => Navigator.pop(context),
+                            onTap: null//() => Navigator.pop(context),
                           ),
                           title: Text('我是 sliver ${model.count}'),
                           centerTitle: true,
@@ -57,6 +58,13 @@ class _SecondPageState extends State<SecondPage> {
                                 model.decrement();
                               },
                               icon: Icon(Icons.router),
+                            ),
+                            IconButton(
+                              icon: Icon(Icons.cached),
+                              onPressed: (){
+                                // localeChange(Locale('zh', ''));//zh为中文
+                                ScopedModel.of<MainStateModel>(context).setLang();
+                              },
                             )
                           ],
                         ),

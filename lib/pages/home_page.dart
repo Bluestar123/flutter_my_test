@@ -65,6 +65,7 @@ class HomePage extends StatelessWidget {
                 child: FlatButton(
                   onPressed: (){
                     //跳转
+                    
                   },
                   child: Text(
                     '搜索"街拍"关键字',
@@ -88,6 +89,7 @@ class HomePage extends StatelessWidget {
             },
           )
         ],
+        
       ),
       drawer: Drawer(
         child:MyDrawer()

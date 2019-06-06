@@ -1,6 +1,6 @@
-const base = '';
+const base = 'http://adr.tinklering.com/api';
 
 const servicePath = {
-  'homePageContent':base+'/wxmini/homePageContent',//商店首页信息
+  'home_detail':base+'/app/article/article',//首页详情
   'homePageBelowConten':base+'/wxmini/homePageBelowConten',//商城首页热卖商品
 };

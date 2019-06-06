@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+
 import 'package:dio/dio.dart';
 import 'dart:io';
 import './service_url.dart';
@@ -31,21 +31,29 @@ Future postForm(url,{formData}) async {
   }
 }
 
-Future get(url) async {
+Future get(url,{data}) async {
   try{
     Response response;
     Dio dio = new Dio();
-    dio.options.contentType =ContentType.parse('application/application/json'); //
+    dio.options.contentType =ContentType.parse('application/json'); //
 
-    response = await dio.get(servicePath[url]);
+
+    if(data!=null){
+      response = await dio.get(servicePath[url],queryParameters:data);
+    }else{
+      response = await dio.get(servicePath[url]);
+    }
     
     if(response.statusCode==200){
+      
       return response.data;
     }else{
+      
       throw Exception('后端接口出现异常');
     }
 
   }catch(e){
+    
     return print('${errorMsg}');
   }
 }

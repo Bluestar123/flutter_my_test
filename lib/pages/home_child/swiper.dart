@@ -37,7 +37,36 @@ class HomeSwiper extends StatelessWidget {
 
                Application.router.navigateTo(context, '/home_detail?id=${index}');
             },
-            child:Image.network('${_items[index]}',fit:BoxFit.cover)
+            child:Stack(
+              children: <Widget>[
+                Image.network(
+                  '${_items[index]}',
+                  fit:BoxFit.cover,
+                  width: MediaQuery.of(context).size.width,
+                  height: ScreenUtil().setHeight(400),
+                ),
+                Positioned(
+                  top: 0,
+                  left: 0,
+                  child: Container(
+                    height: 80,
+                    width: MediaQuery.of(context).size.width,
+                    padding: EdgeInsets.all(20),
+                    alignment: Alignment.centerLeft,
+                    decoration:BoxDecoration(
+                      color: Colors.red,
+                      gradient: LinearGradient(
+                        colors: [Colors.black26.withOpacity(0.5),Colors.cyan.withOpacity(0.6)]
+                      )
+                    ),
+                    child: Text('图片---${index}',style:TextStyle(
+                      color:Colors.white,
+                      fontSize:18
+                    )),
+                  ),
+                )
+              ],
+            )
           );
         },
       ),

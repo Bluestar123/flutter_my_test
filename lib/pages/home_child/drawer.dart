@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:scoped_model/scoped_model.dart';
-import '../models/models.dart';
+import '../store/models.dart';
+
+ValueChanged<Locale> localeChange;
 
 class MyDrawer extends StatelessWidget {
   @override
@@ -42,6 +44,17 @@ class MyDrawer extends StatelessWidget {
               );
             },
           ),
+        ),
+        Container(
+          color: Colors.pink,
+          child:ListTile(
+            onTap: (){
+              localeChange(Locale('en', ''));//zh为中文
+            },
+            title: Text('111'),
+            leading: Icon(Icons.change_history),
+            trailing: Icon(Icons.chevron_right),
+          )
         )
       ],
     );
