@@ -5,22 +5,23 @@ import '../request/service_method.dart';
 
 class HomeDetailModel extends Model{
 
-  HomeDetail _homeDetail = null;
+  DetailModel _homeDetail = null;
 
   get homeDetail => _homeDetail;
   
   getHomeDetailData(data) async{
     var d = data;
     
-    await get('home_detail',data: d).then((val){
-      // var res = json.decode(val.toString());//转成 map
+    // 解析对象
+    await postForm('get_wine',formData:{'goodId':"35df1fdd5d8c468ca525cd7021bd32d8"}).then((val){
+      var res = json.decode(val.toString());//转成 map   //后台数据的问题
+      // _homeDetail = val['article']['article_content'];//转成 对象
+      _homeDetail = DetailModel.fromJson(res); //转换成实体类
 
-      _homeDetail = HomeDetail.fromJson(val);//转成 对象
-      print(_homeDetail);
       notifyListeners();
     }).catchError((err){
-      print('系统故障');
-    });;
+      print('系统故障1111111');
+    });
     
     
   }
@@ -30,4 +31,6 @@ class HomeDetailModel extends Model{
   //     ScopedModel.of<HomeDetailModel>(context);
   //使用
   // HomeDetailModel().of(context)
+
+
 }

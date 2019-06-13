@@ -31,7 +31,7 @@ Future postForm(url,{formData}) async {
   }
 }
 
-Future get(url,{data}) async {
+Future get1(url,{data}) async {
   try{
     Response response;
     Dio dio = new Dio();

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import '../store/models.dart';
-
+import 'package:flutter_html/flutter_html.dart';
 import '../common/loading.dart';
 
 class HomeDetail extends StatelessWidget {
@@ -34,7 +34,12 @@ class HomeDetail extends StatelessWidget {
             return Center(
               child:ScopedModelDescendant<MainStateModel>(
                 builder: (context,child,model){
-                  return Text(model.homeDetail['msg']);
+                  var goodDetail = ScopedModel.of<MainStateModel>(context).homeDetail.data.goodInfo.goodsDetail;
+                  return ListView(
+                    children: <Widget>[
+                      Html(data: goodDetail)
+                    ],
+                  );
                 },
               )
             );
@@ -48,5 +53,6 @@ class HomeDetail extends StatelessWidget {
 
   Future _getData(data,context)async {
     await ScopedModel.of<MainStateModel>(context,rebuildOnChange:true).getHomeDetailData(data);
+    return '加载完成';/////****************** */
   }
 }

@@ -7,6 +7,8 @@ class Routes{
 
   static String homeDetail = '/home_detail';
 
+  static String thirdDetail = '/third_detail';
+
   static void configureRoutes(Router router){
     router.notFoundHandler = new Handler(
       handlerFunc: (BuildContext context,Map<String,List<String>> params){
@@ -16,5 +18,7 @@ class Routes{
 
     //路由配置
     router.define(homeDetail,handler:homeHandler,transitionType:TransitionType.inFromRight);
+    //路由配置
+    router.define(thirdDetail,handler:thirdHandler,transitionType:TransitionType.inFromRight);
   }
 }

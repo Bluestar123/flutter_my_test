@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './router/application.dart';
 
 class ThirdPage extends StatelessWidget {
 
@@ -64,7 +65,12 @@ class ThirdPage extends StatelessWidget {
                   ),
                   SliverGrid(
                     delegate: SliverChildBuilderDelegate(
-                      (_,index)=>Image.network('https://p0.ssl.qhimgs1.com/sdr/400__/t01e5701c63ea56a6aa.jpg',width: 50,height: 50),
+                      (_,index)=>InkWell(
+                        child: Image.network('https://p0.ssl.qhimgs1.com/sdr/400__/t01e5701c63ea56a6aa.jpg',width: 50,height: 50),
+                        onTap: (){
+                          Application.router.navigateTo(context, '/third_detail?id=${index}&name=6666');
+                        },
+                      ),
                       childCount: 8
                     ),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

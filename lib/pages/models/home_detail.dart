@@ -1,136 +1,181 @@
-class HomeDetail {
-  String msg;
-  List<Map> pdfList;
-  int code;
-  List<Map> replyList;
-  Article article;
+class DetailModel {
+  String code;
+  String message;
+  DetailGoodsData data;
 
-  HomeDetail(
-      {this.msg, this.pdfList, this.code, this.replyList, this.article});
+  DetailModel({this.code, this.message, this.data});
 
-  HomeDetail.fromJson(Map<String, dynamic> json) {
-    msg = json['msg'];
-    
+  DetailModel.fromJson(Map<String, dynamic> json) {
     code = json['code'];
-    
-    article =
-        json['article'] != null ? new Article.fromJson(json['article']) : null;
+    message = json['message'];
+    data = json['data'] != null ? new DetailGoodsData.fromJson(json['data']) : null;
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['msg'] = this.msg;
-    
     data['code'] = this.code;
-    
-    if (this.article != null) {
-      data['article'] = this.article.toJson();
+    data['message'] = this.message;
+    if (this.data != null) {
+      data['data'] = this.data.toJson();
     }
     return data;
   }
 }
 
-class Article {
-  String authorAbstract;
-  int expertId;
-  int isCollectionArticle;
-  int readCount;
-  String headPortraitPath;
-  String articleFaq;
-  int id;
-  int isVote;
-  String releaseTime;
-  String secondAuthorName;
-  String unitName;
-  String headImg;
-  String articleContent;
-  int authorType;
-  int articleCollectionCount;
-  String articleTitle;
-  int replyCount;
-  String field;
-  String authorName;
-  int isCollectionExpert;
-  String thirdAuthorName;
-  int voteCount;
+class DetailGoodsData {
+  GoodInfo goodInfo;
+  List<GoodComments> goodComments;
+  AdvertesPicture advertesPicture;
 
-  Article(
-      {this.authorAbstract,
-      this.expertId,
-      this.isCollectionArticle,
-      this.readCount,
-      this.headPortraitPath,
-      this.articleFaq,
-      this.id,
-      this.isVote,
-      this.releaseTime,
-      this.secondAuthorName,
-      this.unitName,
-      this.headImg,
-      this.articleContent,
-      this.authorType,
-      this.articleCollectionCount,
-      this.articleTitle,
-      this.replyCount,
-      this.field,
-      this.authorName,
-      this.isCollectionExpert,
-      this.thirdAuthorName,
-      this.voteCount});
+  DetailGoodsData({this.goodInfo, this.goodComments, this.advertesPicture});
 
-  Article.fromJson(Map<String, dynamic> json) {
-    authorAbstract = json['author_abstract'];
-    expertId = json['expertId'];
-    isCollectionArticle = json['isCollectionArticle'];
-    readCount = json['readCount'];
-    headPortraitPath = json['head_portrait_path'];
-    
-    articleFaq = json['articleFaq'];
-    id = json['id'];
-    isVote = json['isVote'];
-    releaseTime = json['release_time'];
-    secondAuthorName = json['secondAuthorName'];
-    unitName = json['unitName'];
-    headImg = json['headImg'];
-    articleContent = json['article_content'];
-    authorType = json['authorType'];
-    
-    articleCollectionCount = json['articleCollectionCount'];
-    articleTitle = json['article_title'];
-    replyCount = json['replyCount'];
-    field = json['field'];
-    authorName = json['authorName'];
-    isCollectionExpert = json['isCollectionExpert'];
-    thirdAuthorName = json['thirdAuthorName'];
-    voteCount = json['voteCount'];
+  DetailGoodsData.fromJson(Map<String, dynamic> json) {
+    goodInfo = json['goodInfo'] != null
+        ? new GoodInfo.fromJson(json['goodInfo'])
+        : null;
+    if (json['goodComments'] != null) {
+      goodComments = new List<GoodComments>();
+      json['goodComments'].forEach((v) {
+        goodComments.add(new GoodComments.fromJson(v));
+      });
+    }
+    advertesPicture = json['advertesPicture'] != null
+        ? new AdvertesPicture.fromJson(json['advertesPicture'])
+        : null;
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['author_abstract'] = this.authorAbstract;
-    data['expertId'] = this.expertId;
-    data['isCollectionArticle'] = this.isCollectionArticle;
-    data['readCount'] = this.readCount;
-    data['head_portrait_path'] = this.headPortraitPath;
-    
-    data['articleFaq'] = this.articleFaq;
-    data['id'] = this.id;
-    data['isVote'] = this.isVote;
-    data['release_time'] = this.releaseTime;
-    data['secondAuthorName'] = this.secondAuthorName;
-    data['unitName'] = this.unitName;
-    data['headImg'] = this.headImg;
-    data['article_content'] = this.articleContent;
-    data['authorType'] = this.authorType;
-    
-    data['articleCollectionCount'] = this.articleCollectionCount;
-    data['article_title'] = this.articleTitle;
-    data['replyCount'] = this.replyCount;
-    data['field'] = this.field;
-    data['authorName'] = this.authorName;
-    data['isCollectionExpert'] = this.isCollectionExpert;
-    data['thirdAuthorName'] = this.thirdAuthorName;
-    data['voteCount'] = this.voteCount;
+    if (this.goodInfo != null) {
+      data['goodInfo'] = this.goodInfo.toJson();
+    }
+    if (this.goodComments != null) {
+      data['goodComments'] = this.goodComments.map((v) => v.toJson()).toList();
+    }
+    if (this.advertesPicture != null) {
+      data['advertesPicture'] = this.advertesPicture.toJson();
+    }
+    return data;
+  }
+}
+
+class GoodInfo {
+  String image5;
+  int amount;
+  String image3;
+  String image4;
+  String goodsId;
+  String isOnline;
+  String image1;
+  String image2;
+  String goodsSerialNumber;
+  double oriPrice;
+  double presentPrice;
+  String comPic;
+  int state;
+  String shopId;
+  String goodsName;
+  String goodsDetail;
+
+  GoodInfo(
+      {this.image5,
+      this.amount,
+      this.image3,
+      this.image4,
+      this.goodsId,
+      this.isOnline,
+      this.image1,
+      this.image2,
+      this.goodsSerialNumber,
+      this.oriPrice,
+      this.presentPrice,
+      this.comPic,
+      this.state,
+      this.shopId,
+      this.goodsName,
+      this.goodsDetail});
+
+  GoodInfo.fromJson(Map<String, dynamic> json) {
+    image5 = json['image5'];
+    amount = json['amount'];
+    image3 = json['image3'];
+    image4 = json['image4'];
+    goodsId = json['goodsId'];
+    isOnline = json['isOnline'];
+    image1 = json['image1'];
+    image2 = json['image2'];
+    goodsSerialNumber = json['goodsSerialNumber'];
+    oriPrice = json['oriPrice'];
+    presentPrice = json['presentPrice'];
+    comPic = json['comPic'];
+    state = json['state'];
+    shopId = json['shopId'];
+    goodsName = json['goodsName'];
+    goodsDetail = json['goodsDetail'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['image5'] = this.image5;
+    data['amount'] = this.amount;
+    data['image3'] = this.image3;
+    data['image4'] = this.image4;
+    data['goodsId'] = this.goodsId;
+    data['isOnline'] = this.isOnline;
+    data['image1'] = this.image1;
+    data['image2'] = this.image2;
+    data['goodsSerialNumber'] = this.goodsSerialNumber;
+    data['oriPrice'] = this.oriPrice;
+    data['presentPrice'] = this.presentPrice;
+    data['comPic'] = this.comPic;
+    data['state'] = this.state;
+    data['shopId'] = this.shopId;
+    data['goodsName'] = this.goodsName;
+    data['goodsDetail'] = this.goodsDetail;
+    return data;
+  }
+}
+
+class GoodComments {
+  int sCORE;
+  String comments;
+  String userName;
+  int discussTime;
+
+  GoodComments({this.sCORE, this.comments, this.userName, this.discussTime});
+
+  GoodComments.fromJson(Map<String, dynamic> json) {
+    sCORE = json['SCORE'];
+    comments = json['comments'];
+    userName = json['userName'];
+    discussTime = json['discussTime'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['SCORE'] = this.sCORE;
+    data['comments'] = this.comments;
+    data['userName'] = this.userName;
+    data['discussTime'] = this.discussTime;
+    return data;
+  }
+}
+
+class AdvertesPicture {
+  String pICTUREADDRESS;
+  String tOPLACE;
+
+  AdvertesPicture({this.pICTUREADDRESS, this.tOPLACE});
+
+  AdvertesPicture.fromJson(Map<String, dynamic> json) {
+    pICTUREADDRESS = json['PICTURE_ADDRESS'];
+    tOPLACE = json['TO_PLACE'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['PICTURE_ADDRESS'] = this.pICTUREADDRESS;
+    data['TO_PLACE'] = this.tOPLACE;
     return data;
   }
 }
