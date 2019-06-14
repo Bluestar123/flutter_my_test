@@ -18,11 +18,9 @@ class _FourthPageState extends State<FourthPage> with SingleTickerProviderStateM
   TabController  mTabController;
   PageController mPageController = PageController(initialPage: 0);
 
-  ScrollController scrollController = ScrollController();
   var currentPage = 0;
   var isPageCanChanged = true;
-  bool isScrollTop;
-
+  
   var tabs = [
     TabTitle("头条",0),
     TabTitle("社会",1),
@@ -34,12 +32,13 @@ class _FourthPageState extends State<FourthPage> with SingleTickerProviderStateM
     TabTitle("财经",7),
     TabTitle('时尚',8),
   ];
+  
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    isScrollTop=false;
+    
     mTabController = TabController(
       length: tabs.length,
       vsync: this////动画效果的异步处理，默认格式，背下来即可
@@ -48,21 +47,11 @@ class _FourthPageState extends State<FourthPage> with SingleTickerProviderStateM
     mTabController.addListener(() {//TabBar的监听
       if (mTabController.indexIsChanging) {//判断TabBar是否切换
         print(mTabController.index);
+        
         onPageChange(mTabController.index, p: mPageController);
       }
     });
 
-    scrollController.addListener((){
-      if(scrollController.offset>150.0){
-        setState(() {
-         isScrollTop=true; 
-        });
-      }else{
-        setState(() {
-         isScrollTop=false; 
-        });
-      }
-    });
   }
 
   @override
@@ -124,19 +113,7 @@ class _FourthPageState extends State<FourthPage> with SingleTickerProviderStateM
           ],
         ),
       ),
-      floatingActionButton:isScrollTop? FloatingActionButton(
-        onPressed: (){
-          scrollController.animateTo(
-            0.0,
-            curve: Curves.easeOut,
-            duration: const Duration(milliseconds: 300),
-          );
-        },
-        child: Icon(Icons.vertical_align_top),
-        backgroundColor: Color(0xffd43d3d),
-        elevation: 2.0,
-        highlightElevation: 2.0
-      ):null,
+      
       body: Column(
         children: <Widget>[
           Container(
@@ -168,32 +145,7 @@ class _FourthPageState extends State<FourthPage> with SingleTickerProviderStateM
               },
               controller: mPageController,
               itemBuilder: (BuildContext context,int index){
-                return ListView.builder(
-                  itemCount: 30,
-                  controller: scrollController,
-                  itemBuilder: (context,index){
-                    return Container(
-                      margin: EdgeInsets.symmetric(vertical: 20),
-                      padding: EdgeInsets.symmetric(horizontal: 20),
-                      decoration: BoxDecoration(
-                        border: Border(bottom: BorderSide(
-                          width: 1,
-                          color: Colors.grey
-                        ))
-                      ),
-                      child: ListTile(
-                        leading: Icon(Icons.title),
-                        title: Text(
-                          'tab--$index',
-                          style:TextStyle(
-                            fontSize: 18.0,
-                          )
-                        ),
-                        trailing: Icon(Icons.chevron_right),
-                      ),
-                    );
-                  },
-                );
+                return ListItem();
               },
             ),
           )
@@ -220,6 +172,83 @@ class _FourthPageState extends State<FourthPage> with SingleTickerProviderStateM
   }
 }
 
+
+class ListItem extends StatefulWidget {
+  @override
+  _ListItemState createState() => _ListItemState();
+}
+
+class _ListItemState extends State<ListItem> with AutomaticKeepAliveClientMixin {
+  // keep alive 保持页面状态
+  @override
+  bool get wantKeepAlive => true;
+
+  ScrollController scrollController = ScrollController();
+  bool isScrollTop;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    isScrollTop=false;
+    scrollController.addListener((){
+      if(scrollController.offset>150.0){
+        setState(() {
+         isScrollTop=true; 
+        });
+      }else{
+        setState(() {
+         isScrollTop=false; 
+        });
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      floatingActionButton:isScrollTop? FloatingActionButton(
+        onPressed: (){
+          scrollController.animateTo(
+            0.0,
+            curve: Curves.easeOut,
+            duration: const Duration(milliseconds: 300),
+          );
+        },
+        child: Icon(Icons.vertical_align_top),
+        backgroundColor: Color(0xffd43d3d),
+        elevation: 2.0,
+        highlightElevation: 2.0
+      ):null,
+      body: ListView.builder(
+                  itemCount: 30,
+                  controller: scrollController,
+                  itemBuilder: (context,index){
+                    return Container(
+                      margin: EdgeInsets.symmetric(vertical: 20),
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      decoration: BoxDecoration(
+                        border: Border(bottom: BorderSide(
+                          width: 1,
+                          color: Colors.grey
+                        ))
+                      ),
+                      child: ListTile(
+                        leading: Icon(Icons.title),
+                        title: Text(
+                          'tab--$index',
+                          style:TextStyle(
+                            fontSize: 18.0,
+                          )
+                        ),
+                        trailing: Icon(Icons.chevron_right),
+                      ),
+                    );
+                  },
+                ),
+    );
+  }
+}
 
 
 // class FourthPage extends StatelessWidget {

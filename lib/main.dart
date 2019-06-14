@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import './generated/i18n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import './pages/login.dart';
+import './pages/intro_view_demo.dart';
 import 'package:flutter/services.dart';
 import 'package:fluro/fluro.dart';
 import './pages/router/application.dart';
@@ -71,7 +71,7 @@ class _MyAppState extends State<MyApp> {
               onGenerateRoute: Application.router.generator,
         //       localeListResolutionCallback: S.delegate.listResolution(
         // fallback: const Locale('en', ''),),  固定 哪种语言
-              home: Login()
+              home: IntroViewDemo()
               // Builder(builder: (BuildContext context){
               //   return Localizations.override(
               //     context: context,

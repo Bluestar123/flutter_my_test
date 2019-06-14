@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import '../store/models.dart';
 import '../common/loading.dart';
-import 'package:image_test_utils/image_test_utils.dart';
 
 class ThirdDetail extends StatelessWidget {
 
