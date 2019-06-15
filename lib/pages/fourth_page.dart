@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import './router/application.dart';
 
 
 class TabTitle{
@@ -145,7 +145,7 @@ class _FourthPageState extends State<FourthPage> with SingleTickerProviderStateM
               },
               controller: mPageController,
               itemBuilder: (BuildContext context,int index){
-                return ListItem();
+                return index!=5?ListItem():Text('未完待续');
               },
             ),
           )
@@ -236,12 +236,18 @@ class _ListItemState extends State<ListItem> with AutomaticKeepAliveClientMixin 
                       child: ListTile(
                         leading: Icon(Icons.title),
                         title: Text(
-                          'tab--$index',
+                          index==0?'Draggable实现可拖拽':'tab--$index',
                           style:TextStyle(
                             fontSize: 18.0,
                           )
                         ),
                         trailing: Icon(Icons.chevron_right),
+                        onTap: (){
+                          if(index == 0){
+                            //拖拽
+                            Application.router.navigateTo(context, '/draggle_grid_view');
+                          }
+                        },
                       ),
                     );
                   },

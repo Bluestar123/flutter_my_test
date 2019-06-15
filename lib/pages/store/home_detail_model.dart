@@ -14,13 +14,16 @@ class HomeDetailModel extends Model{
     
     // 解析对象
     await postForm('get_wine',formData:{'goodId':"35df1fdd5d8c468ca525cd7021bd32d8"}).then((val){
-      var res = json.decode(val.toString());//转成 map   //后台数据的问题
+      // List<dynamic> ts = val.data;
+      // var aa = json.decode(ts.toString());
+      
+      dynamic res = json.decode(val.toString());//转成 map   //后台数据的问题
       // _homeDetail = val['article']['article_content'];//转成 对象
       _homeDetail = DetailModel.fromJson(res); //转换成实体类
 
       notifyListeners();
     }).catchError((err){
-      print('系统故障1111111');
+      print('系统故障1111111  $err');
     });
     
     

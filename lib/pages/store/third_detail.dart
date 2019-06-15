@@ -13,10 +13,13 @@ class ThirdDetail extends Model {
     await get1('get_pic').then((val){
       
       _picList = json.decode(val.toString())['data'];
+      // List<Map> list = (res['data'] as List).cast();
+      // _picList = PicData.fromJson(list) ;
+// print(_picList);
       notifyListeners();
 
     }).catchError((err){
-      print('请求数据出错');
+      print('请求数据出错  $err');
     });
 
   }
