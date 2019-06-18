@@ -11,6 +11,8 @@ class Routes{
 
   static String dragDetail = '/draggle_grid_view';
 
+  static String amapDetail = '/amap';
+
   static void configureRoutes(Router router){
     router.notFoundHandler = new Handler(
       handlerFunc: (BuildContext context,Map<String,List<String>> params){
@@ -25,5 +27,8 @@ class Routes{
 
     // 长按拖动
     router.define(dragDetail,handler:draggableHandler,transitionType:TransitionType.inFromRight);
+
+    //高德地图
+    router.define(amapDetail,handler:amapHandler,transitionType:TransitionType.inFromRight);
   }
 }

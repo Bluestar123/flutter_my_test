@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import './router/application.dart';
+import 'package:flutter/cupertino.dart';
+import './fourth_child/RightBackDemo.dart';
 
 
 class TabTitle{
@@ -236,7 +238,9 @@ class _ListItemState extends State<ListItem> with AutomaticKeepAliveClientMixin 
                       child: ListTile(
                         leading: Icon(Icons.title),
                         title: Text(
-                          index==0?'Draggable实现可拖拽':'tab--$index',
+                          index==0?'Draggable实现可拖拽':
+                            index==1?'高德地图':
+                              index == 2?'右滑返回':'tab--$index',
                           style:TextStyle(
                             fontSize: 18.0,
                           )
@@ -246,6 +250,16 @@ class _ListItemState extends State<ListItem> with AutomaticKeepAliveClientMixin 
                           if(index == 0){
                             //拖拽
                             Application.router.navigateTo(context, '/draggle_grid_view');
+                          }else if(index ==1){
+                            //高德
+                            Application.router.navigateTo(context, '/amap');
+                          }else if(index ==2){
+                            //右滑返回
+                            Navigator.of(context).push(CupertinoPageRoute(
+                              builder: (context){
+                                return RightBackDemo();
+                              }
+                            ));
                           }
                         },
                       ),

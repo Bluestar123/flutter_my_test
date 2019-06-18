@@ -3,6 +3,7 @@ import 'package:fluro/fluro.dart';
 import '../home_child/home_detail.dart';
 import '../fourth_child/draggable_gridview.dart';
 import '../third_child/third_detail.dart';
+import '../fourth_child/amap.dart';
 
 //首页详情
 Handler homeHandler = Handler(
@@ -27,5 +28,13 @@ Handler draggableHandler = Handler(
   handlerFunc: (BuildContext context,Map<String,List<String>> params){
 
     return DraggableGridViewDemo();
+  }
+);
+
+//高德地图
+Handler amapHandler = Handler(
+  handlerFunc: (BuildContext context,Map<String,List<String>> params){
+
+    return AmapDemo();
   }
 );
