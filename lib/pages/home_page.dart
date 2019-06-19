@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import './home_child/search_view.dart';
+import './router/application.dart';
 import './home_child/swiper.dart';
 import './home_child/middle_listview.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
@@ -65,7 +65,7 @@ class HomePage extends StatelessWidget {
                 child: FlatButton(
                   onPressed: (){
                     //跳转
-                    
+                    Application.router.navigateTo(context,'/home_search');
                   },
                   child: Text(
                     '搜索"街拍"关键字',

@@ -5,6 +5,7 @@ import '../fourth_child/draggable_gridview.dart';
 import '../third_child/third_detail.dart';
 import '../fourth_child/amap.dart';
 import '../fourth_child/resume.dart';
+import '../home_child/search_page.dart';
 
 //首页详情
 Handler homeHandler = Handler(
@@ -20,6 +21,14 @@ Handler thirdHandler = Handler(
     String id = params['id'].first;
     String name = params['name'].first;
     return ThirdDetail(id: id,name: name);
+  }
+);
+
+//首页搜索
+Handler searchHandler = Handler(
+  handlerFunc: (BuildContext context,Map<String,List<String>> params){
+
+    return SearchPage();
   }
 );
 
