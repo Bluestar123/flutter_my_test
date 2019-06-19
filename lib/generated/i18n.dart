@@ -20,6 +20,7 @@ class S implements WidgetsLocalizations {
   TextDirection get textDirection => TextDirection.ltr;
 
   String get appName => "Carpe Diem";
+  String get resume => "Resume";
 }
 
 class $en extends S {
@@ -32,6 +33,8 @@ class $zh_CN extends S {
   @override
   TextDirection get textDirection => TextDirection.ltr;
 
+  @override
+  String get resume => "个人简历";
   @override
   String get appName => "及时行乐";
 }

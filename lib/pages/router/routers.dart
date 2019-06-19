@@ -13,6 +13,8 @@ class Routes{
 
   static String amapDetail = '/amap';
 
+  static String resumePage = '/resume';
+
   static void configureRoutes(Router router){
     router.notFoundHandler = new Handler(
       handlerFunc: (BuildContext context,Map<String,List<String>> params){
@@ -30,5 +32,8 @@ class Routes{
 
     //高德地图
     router.define(amapDetail,handler:amapHandler,transitionType:TransitionType.inFromRight);
+
+    //个人简历
+    router.define(resumePage,handler:resumeHandler,transitionType:TransitionType.inFromRight);
   }
 }

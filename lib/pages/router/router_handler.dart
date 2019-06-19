@@ -4,6 +4,7 @@ import '../home_child/home_detail.dart';
 import '../fourth_child/draggable_gridview.dart';
 import '../third_child/third_detail.dart';
 import '../fourth_child/amap.dart';
+import '../fourth_child/resume.dart';
 
 //首页详情
 Handler homeHandler = Handler(
@@ -36,5 +37,13 @@ Handler amapHandler = Handler(
   handlerFunc: (BuildContext context,Map<String,List<String>> params){
 
     return AmapDemo();
+  }
+);
+
+//个人简历
+Handler resumeHandler = Handler(
+  handlerFunc: (BuildContext context,Map<String,List<String>> params){
+
+    return ResumeDemo();
   }
 );

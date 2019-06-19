@@ -3,7 +3,6 @@ import 'package:scoped_model/scoped_model.dart';
 import '../generated/i18n.dart';
 import 'package:test_flutter_demo/pages/store/models.dart';
 import './store/models.dart';
-import 'package:flutter/services.dart';
 
 class SecondPage extends StatefulWidget {
   @override
