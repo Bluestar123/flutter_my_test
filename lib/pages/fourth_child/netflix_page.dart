@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts_arabic/fonts.dart';
+import 'package:test_flutter_demo/pages/fourth_child/meituan.dart';
 import '../common/customicon.dart';
+import 'meituan.dart';
 
 class NetflixPage extends StatefulWidget {
   @override
@@ -130,7 +132,13 @@ class HomeScreeTopPart extends StatelessWidget {
                           color: Color(0xffe52020),
                           padding: EdgeInsets.symmetric(
                               vertical: 15.0, horizontal: 80.0),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(
+                              builder: (context){
+                                return MeiTuan();
+                              }
+                            ));
+                          },
                           child: Row(
                             children: <Widget>[
                               Text('Watch Now',
@@ -263,9 +271,9 @@ class Mclipper extends CustomClipper<Path> {
     var path = new Path();
 
     //path 是 逆时针 画点
-    path.lineTo(0.0, size.height - 100.0);
+    path.lineTo(0.0, size.height - 100.0);   //从左下角 开始
 
-    var controlpoint = Offset(35.0, size.height);
+    var controlpoint = Offset(35.0, size.height);  //control 是  贝塞尔 切线 点
     var endpoint = Offset(size.width / 2, size.height);
 
     path.quadraticBezierTo(
