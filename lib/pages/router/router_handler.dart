@@ -6,6 +6,7 @@ import '../third_child/third_detail.dart';
 import '../fourth_child/amap.dart';
 import '../fourth_child/resume.dart';
 import '../home_child/search_page.dart';
+import '../fourth_child/netflix_page.dart';
 
 //首页详情
 Handler homeHandler = Handler(
@@ -54,5 +55,13 @@ Handler resumeHandler = Handler(
   handlerFunc: (BuildContext context,Map<String,List<String>> params){
 
     return ResumeDemo();
+  }
+);
+
+//仿 netflix页面
+Handler netflixHandler = Handler(
+  handlerFunc: (BuildContext context,Map<String,List<String>> params){
+
+    return NetflixPage();
   }
 );

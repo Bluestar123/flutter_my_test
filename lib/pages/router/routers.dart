@@ -17,6 +17,8 @@ class Routes{
 
   static String resumePage = '/resume';
 
+  static String netflixPage = '/netflix';
+
   static void configureRoutes(Router router){
     router.notFoundHandler = new Handler(
       handlerFunc: (BuildContext context,Map<String,List<String>> params){
@@ -41,5 +43,8 @@ class Routes{
 
     //个人简历
     router.define(resumePage,handler:resumeHandler,transitionType:TransitionType.inFromRight);
+
+    //仿 netflix
+    router.define(netflixPage,handler:netflixHandler,transitionType:TransitionType.inFromRight);
   }
 }

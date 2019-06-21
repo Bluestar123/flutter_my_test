@@ -241,7 +241,8 @@ class _ListItemState extends State<ListItem> with AutomaticKeepAliveClientMixin 
                           index==0?'Draggable实现可拖拽':
                             index==1?'高德地图':
                               index == 2?'右滑返回':
-                                index==3?'个人简历':'tab--$index',
+                                index==3?'个人简历':
+                                  index ==4?'仿netflix界面':'tab--$index',
                           style:TextStyle(
                             fontSize: 18.0,
                           )
@@ -264,7 +265,11 @@ class _ListItemState extends State<ListItem> with AutomaticKeepAliveClientMixin 
                           }else if(index ==3){
                             //个人简历
                             Application.router.navigateTo(context, '/resume');
+                          }else if(index ==4){
+                            //仿Netflix
+                            Application.router.navigateTo(context, '/netflix');
                           }
+                          
                         },
                       ),
                     );

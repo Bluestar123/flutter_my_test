@@ -43,6 +43,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   extended_image: ^0.5.1
+  google_fonts_arabic: ^1.1.7
   # image_picker: ^0.6.0+9
   # image_picker_saver: ^0.3.0
 
@@ -75,6 +76,7 @@ flutter:
    - images/waiter.png
    - images/search.svg
    - images/resume/
+   - images/netflix/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -105,4 +107,25 @@ flutter:
     - family: iconfont
       fonts:
         - asset: fonts/iconfont.ttf
+    - family: CustomFont
+      fonts:
+        - asset: fonts/CustomFont.ttf
+    # - family: Roboto
+    #   fonts:
+    #     - asset: fonts/Roboto-Light.ttf
+    - family: back_icon
+      fonts:
+        - asset: fonts/back_icon.ttf
+    # - family: SF-Pro-Display-Regular
+    #   fonts:
+    #     - asset: fonts/SF-Pro-Display-Regular.ttf
+    # - family: SF-Pro-Display-Bold
+    #   fonts: 
+    #     - asset: fonts/SF-Pro-Display-Bold.ttf
+    # - family: fangzheng
+    #   fonts: 
+    #     - asset: fonts/fangzheng.ttf
+    - family: kai
+      fonts: 
+        - asset: fonts/kai.ttf
 
