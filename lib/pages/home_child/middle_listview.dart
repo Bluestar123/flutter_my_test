@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:scoped_model/scoped_model.dart';
 import '../store/models.dart';
+import './img_swiper.dart';
 
 class HomeMidList extends StatefulWidget {
   @override
@@ -50,6 +51,12 @@ class _HomeMidListState extends State<HomeMidList> {
                                 model.increment();
                               },
                               child: Text('点击我+1'),
+                            ),
+                            GestureDetector(
+                              child: Text('保存'),
+                              onTap: (){
+                                // saveNetworkImageToPhoto(String url, {bool useCache: true})
+                              },
                             )
                           ],
                         ),
@@ -116,8 +123,16 @@ class _HomeMidListState extends State<HomeMidList> {
   Widget img(String src){
     return Container(
       width: ScreenUtil().setWidth(370),
-      height: ScreenUtil().setHeight(370),
-      child: Image.network('${src}',fit:BoxFit.cover),
+      height: ScreenUtil().setWidth(370),
+      child: GestureDetector(
+        child: Image.network('${src}',fit:BoxFit.cover),
+        onTap: (){
+          Navigator.push(context, MaterialPageRoute(builder: (context){
+            return ImgSwiper(); 
+          }));
+        },
+      ),
+      
     );
   }
 }

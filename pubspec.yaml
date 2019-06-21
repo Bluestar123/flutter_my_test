@@ -21,6 +21,8 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+  cached_network_image:
+    git: https://github.com/tangtaoit/flutter_cached_network_image.git
   flutter_screenutil: ^0.5.1
   flutter_swiper: ^1.1.4
   flutter_easyrefresh: ^1.2.7
@@ -40,6 +42,9 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
+  extended_image: ^0.5.1
+  # image_picker: ^0.6.0+9
+  # image_picker_saver: ^0.3.0
 
 dev_dependencies:
   flutter_test:
